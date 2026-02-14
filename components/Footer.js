@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+
 export default function Footer({ footerData }) {
     return (
         <footer className="py-16 bg-white border-t border-gray-100">
@@ -7,8 +8,11 @@ export default function Footer({ footerData }) {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                     {/* Brand */}
                     <div>
-                        <Link href="/" className="font-logo text-2xl text-brand-blue-500 inline-block mb-6">
-                            Upsera
+                        <Link href="/" className="inline-block mb-6 flex flex-col items-start group hover:opacity-80 transition-opacity">
+                            <span className="font-logo text-3xl md:text-4xl text-brand-blue-500 italic tracking-tight leading-none">
+                                Upsera<span className="text-brand-blue-500 not-italic">.</span>
+                            </span>
+                            <span className="text-[0.5rem] uppercase tracking-wide text-gray-600 font-medium -mt-1 ml-12">We build. You rise.</span>
                         </Link>
                         <p className="text-sm text-gray-500 leading-relaxed max-w-sm">
                             {footerData.description}

@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+
 import Link from 'next/link';
 
 export default function Header({ navigation }) {
@@ -56,12 +57,15 @@ export default function Header({ navigation }) {
         >
             <nav className="section-container">
                 <div className="flex items-center justify-between">
-                    {/* Logo - Italian-inspired italic font */}
+                    {/* Logo */}
                     <Link
                         href="/"
-                        className="font-logo text-2xl text-brand-blue-500 transition-all duration-300 hover:scale-105"
+                        className="flex flex-col items-start group transition-all duration-300 hover:scale-105"
                     >
-                        Upsera
+                        <span className="font-logo text-3xl md:text-4xl text-brand-blue-500 italic tracking-tight leading-none">
+                            Upsera<span className="text-brand-blue-500 not-italic">.</span>
+                        </span>
+                        <span className="text-[0.5rem] uppercase tracking-wide text-gray-600 font-medium -mt-1 ml-12">We build. You rise.</span>
                     </Link>
 
                     {/* Navigation - Centered with active indicators */}
@@ -71,8 +75,8 @@ export default function Header({ navigation }) {
                                 key={item.name}
                                 href={item.href}
                                 className={`nav-link text-sm font-medium transition-all duration-300 ${isActive(item.href)
-                                        ? 'active text-brand-blue-500'
-                                        : 'text-gray-600 hover:text-brand-blue-500'
+                                    ? 'active text-brand-blue-500'
+                                    : 'text-gray-600 hover:text-brand-blue-500'
                                     }`}
                             >
                                 {item.name}
