@@ -461,3 +461,74 @@ body {
   border-color: rgba(59, 130, 246, 0.3);
   box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
 }
+
+/* ==================== 3D DEPTH SYSTEM ==================== */
+
+/* Perspective container for 3D children */
+.perspective-container {
+  perspective: 1200px;
+  perspective-origin: center;
+}
+
+/* 3D card with specular glare */
+.card-3d {
+  transform-style: preserve-3d;
+  will-change: transform;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-3d::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.04) 45%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.04) 55%,
+    transparent 60%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 10;
+  border-radius: inherit;
+}
+
+.card-3d:hover::after {
+  opacity: 1;
+}
+
+/* Depth layer offsets for parallax */
+.depth-far {
+  transform: translateZ(-40px) scale(1.04);
+}
+
+.depth-mid {
+  transform: translateZ(0px);
+}
+
+.depth-near {
+  transform: translateZ(30px) scale(0.97);
+}
+
+/* Section entrance with depth */
+.section-3d {
+  transform-style: preserve-3d;
+}
+
+/* Accessibility: disable 3D for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .card-3d,
+  .perspective-container,
+  .section-3d {
+    perspective: none !important;
+    transform: none !important;
+  }
+
+  .card-3d::after {
+    display: none;
+  }
+}
